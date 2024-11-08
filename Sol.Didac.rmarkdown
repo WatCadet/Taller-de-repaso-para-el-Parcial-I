@@ -11,7 +11,9 @@ Rendering:
 author: 
   - Dídac Capó
 ---
+
 [Enlace al repositorio de Github](https://github.com/WatCadet/Taller-de-repaso-para-el-Parcial-I)
+
 
 ```{r, echo=FALSE, eval=TRUE}
 library(MASS)
@@ -19,6 +21,7 @@ library(tidyverse)
 library(dplyr)
 library(GGally)
 ```
+
 
 ## Resumen
 
@@ -64,6 +67,7 @@ Las variables que usaremos para analizar nuestra hipotesis son las siguientes:
 ### Simulación de los datos
 
 Definimos las medias y matriz de covarianza para las variables cuantitativas. El vector de medias sigue el siguiente orden: media de horas de apoyo familiar, media de calificaciones, media de horas de estudio individual, media de minutos de transporte.
+
 ```{r}
 media <- c(5, 6.5, 7.5, 15)
 covarianza <- matrix(c(4, 1, 1.5, 0.5,
@@ -72,8 +76,6 @@ covarianza <- matrix(c(4, 1, 1.5, 0.5,
                        0.5, 0.2, 0.7, 6), 
                      nrow = 4, ncol = 4)
 ```
-
-
 
 ```{r}
 # Establecer una semilla para reproducibilidad
@@ -99,11 +101,15 @@ data_apoyo_familiar <- data.frame(
 )
 ```
 
+
 Mostramos las 6 primeras filas:
+
 ```{r}
 head(data_apoyo_familiar)
 ```
+
 Vamos a añadir dos variables más, extraidas del conjunto de datos `Students_Performance.csv` que podemos encontrar en el siguiente [enlace](https://www.kaggle.com/datasets/muhammadroshaanriaz/students-performance-dataset-cleaned?resource=download). 
+
 
 ```{r}
 students_data<-read.csv("Students_Performance.csv",
@@ -117,12 +123,16 @@ set.seed(42)  # Aseguramos reproducibilidad
 sampled_data <- subset_data %>%
   sample_n(100)
 ```
+
 Veamos que niveles tienen nuestras dos nuevas variables y su frecuencia:
+
 ```{r}
 sampled_data %>%
   count(parental_level_of_education)
 ```
+
 Vamos a agrupar en solo dos clases:
+
 
 ```{r}
 sampled_data <- sampled_data %>%
@@ -137,6 +147,7 @@ sampled_data %>%
   count(lunch)
 ```
 
+
 Las nuevas variables son:
 
 - *Educación Padres*: Indica el nivel educativo de la familia del estudiante. Es una variable nominal con dos niveles: Estudios básicos y Estudios superiores.
@@ -144,6 +155,7 @@ Las nuevas variables son:
 - *Lunch*: Muestra si los estudiantes reciben almuerzo lo cual es a menudo un indicador socioeconómico. Es una variable binària con dos valores 1, si si recibe y 0, si no recibe.
 
 Finalmente, añadimos al conjunto de datos inicial nuestras dos nuevas variables:
+
 
 ```{r}
 # Crear un nuevo dataset con las columnas que quieres añadir
@@ -157,15 +169,18 @@ data_apoyo_familiar <- bind_cols(data_apoyo_familiar, nuevas_columnas)
 
 head(data_apoyo_familiar)
 ```
+
 ## Análisis descriptivo (Parte III)
 
 Para realizar el análisis descriptivo multivariante usaremos un `ggpairs`. Lo haremos solo de las variables que creemos que son más interesantes para alcanzar nuestros objetivos.
+
 
 ```{r}
 subset1_data_apoyo_familiar <- data_apoyo_familiar %>%
   select(h_apoyo_familiar, media_calificaciones, h_estudio_individual, genero)
 ggpairs(subset1_data_apoyo_familiar)
 ```
+
 Analizemos el siguiente gráfico de dispersión que nos permite examinar visualmente las relaciones entre varias variables numéricas y categóricas relacionadas con el apoyo familiar y el rendimiento académico.
 
 En la **Diagonal principal** están las distribuciones individuales (histogramas y curvas de densidad) de cada variable numérica:
@@ -199,10 +214,12 @@ La correlación positiva respalda la hipótesis de que mayores niveles de apoyo 
 
 Veamos ahora solo para las variables cuantitativas, que varianza generalizada y  varianza total tienen. 
 
+
 ```{r}
 subset2_data_apoyo_familiar <- data_apoyo_familiar %>%
   select(h_apoyo_familiar, media_calificaciones, h_estudio_individual, tiempo_transporte)
 ```
+
 
 Las definiciones de varianza generalizada y variación total són las siguientes,repectivamente: 
 
@@ -210,20 +227,26 @@ $$|S| = \prod_i^p \lambda_i$$
 $$Tr(S)= \sum_i^p \lambda_i$$
 donde los $\lambda_i$ són los valores propios de la matriz de covarianzas $S$. Saquemos los valores propios de $S$:
 
+
 ```{r}
 S = cov(subset2_data_apoyo_familiar)
 valores_propios <- eigen(S)$values
 valores_propios
 ```
+
 Por tanto, la varianza generalizada es:
+
 
 ```{r}
 prod(valores_propios)
 ```
+
 Y, la variación total: 
+
 ```{r}
 sum(valores_propios)
 ```
+
 La variación total representa la dispersión individual de las variables. Es decir, mide cuánto varía cada variable sin considerar las relaciones entre ellas(ignora las covarianzas). Mientras que la varianza generalizada mide la variabilidad conjunta de las variables, es decir, cuánto varían las variables juntas. En este caso, la varianza generalizada es $196.4$ y la variación total $17.4$. Esto indica que las cuatro variables tienen una cantidad poco significativa de variación individual(como refleja la variación total), aunque hay una gran dispersión conjunta. Esto indica que no hay redundancia entre las variables. 
 
 ## Aplicación de pruebas estadísticas
@@ -232,11 +255,14 @@ La variación total representa la dispersión individual de las variables. Es de
 
 Primero, necesitamos calcular las probabilidades de que un estudiante pertenezca a cada una de las categorías de nivel_apoyo_familiar.
 
+
 ```{r}
 probabilidades_apoyo_familiar <- prop.table(table(data_apoyo_familiar$nivel_apoyo_familiar))
 probabilidades_apoyo_familiar
 ```
+
 Ahora que tenemos las probabilidades de las categorías, podemos modelar la variable nivel_apoyo_familiar usando una distribución multinomial. Supondremos que tenemos una muestra de tamaño 20 y utilizaremos la función rmultinom() para realizar la simulación de esta distribución.
+
 
 ```{r}
 
@@ -252,7 +278,9 @@ simulacion_apoyo <- rmultinom(1, size = 20, prob = c(pb, pm, pa))
 simulacion_apoyo
 
 ```
+
 Ahora, calculemos la probabilidad de que, en una muestra de tamaño 20, al menos 10 estudiantes tengan un alto nivel de apoyo familiar (categoría "Alto"). Podemos realizar una simulación para obtener la probabilidad de que ocurra este evento.
+
 
 ```{r}
 # Simular múltiples muestras para aproximar la probabilidad
@@ -268,14 +296,17 @@ probabilidad_evento_apoyo
 
 ```
 
+
 Una probabilidad de 0.0856 indica que solo en el 8.56% de las muestras de 20 estudiantes se observa que al menos 10 tienen un alto nivel de apoyo familiar, lo que sugiere que este nivel de apoyo no es común en la población estudiada. Esto implica que un alto apoyo familiar podría no ser la norma, afectando su impacto en el rendimiento académico.
 
 ### Modelo de regresión multivariante para media_calificaciones Parte(V)
 
 Veamos las 6 primeras filas de la tabla de variables cuantitativas:
+
 ```{r}
 head(subset2_data_apoyo_familiar)
 ```
+
 Queremos explicar la variable `media_calificaciones` a partir de las otras tres.Para calcular la función de score en este contexto, consideremos que queremos estimar los parámetros $\beta_0, \beta_1,\beta_2$ y $\beta_3$ del modelo de regresión lineal múltiple:
 
 $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 \beta_3 X_3 + \epsilon,$$
@@ -301,6 +332,7 @@ Dado que el término de error $\epsilon$ sigue una distribución normal, el vect
 
 $$Y \sim \mathcal{N}(X \beta, \sigma^2 I).$$
 Hagamos el modelo de regresión multivariante: 
+
 ```{r}
 modelo_regresion <- lm(media_calificaciones ~ h_apoyo_familiar + h_estudio_individual +tiempo_transporte , data = subset2_data_apoyo_familiar)
 
@@ -308,6 +340,7 @@ modelo_regresion <- lm(media_calificaciones ~ h_apoyo_familiar + h_estudio_indiv
 summary(modelo_regresion)
 
 ```
+
 Analizemos los resultados dados:
 
 - $\beta_0$: El intercepto és $3.18$ que es el valor de \textit{media\_calificaciones} cuando todas las variables independientes son 0.
