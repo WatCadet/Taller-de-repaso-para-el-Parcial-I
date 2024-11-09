@@ -13,14 +13,17 @@ author:
 ---
 [Enlace al repositorio de Github](https://github.com/WatCadet/Taller-de-repaso-para-el-Parcial-I)
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, message=FALSE}
 library(MASS)
 library(tidyverse)
 library(dplyr)
 library(GGally)
+library(Hotelling)
 ```
 
 ## Resumen
+
+En este análisis se realizará un estudio multivariante a partir de datos recolectados de estudiantes. El objetivo es determinar si el nivel de apoyo que los estudiantes sienten en casa en relación con sus estudios tiene un impacto significativo en su desempeño académico. A través de técnicas estadísticas multivariantes, se analizarán diversas variables relacionadas con el entorno familiar y los resultados escolares para identificar posibles patrones que permitan entender mejor esta influencia.
 
 ## Hipotesis y objetivos (Parte I)
 
@@ -30,17 +33,17 @@ La hipótesis a investigar es la siguiente: “Los estudiantes que reciben apoyo
 
 - Evaluar el impacto del apoyo familiar en el rendimiento académico de los estudiantes.
 
-### Objetivos específicos
+### Objetivos secundários
 
-- Medir el nivel de apoyo familiar. 
+- Medir la percepción de los estudiantes sobre el apoyo que reciben en casa.
 
-- Cuantificar el rendimiento académico.
+- Cuantificar el rendimiento académico y ver si se relaciona con el apoyo familiar.
 
-- Establecer una relación entre el apoyo familiar y el rendimiento académico.
+- Considerar otros factores que puedan afectar el rendimiento académico.
 
-- Controlar variables adicionales que puedan influir en el rendimiento académico.
+- 
+Verificar si el rendimiento académico y el apoyo familiar cambian según el nivel educativo de los padres.
 
-- Validar la hipótesis. 
 
 ## Creación y descripción de la base de datos (Parte II)
 
@@ -230,13 +233,13 @@ La variación total representa la dispersión individual de las variables. Es de
 
 ### Modelizar la variable nivel_apoyo_familiar (Parte IV)
 
-Primero, necesitamos calcular las probabilidades de que un estudiante pertenezca a cada una de las categorías de nivel_apoyo_familiar.
+Primero, necesitamos calcular las probabilidades de que un estudiante pertenezca a cada una de las categorías del nivel de apoyo familiar percibido por el alumno
 
 ```{r}
 probabilidades_apoyo_familiar <- prop.table(table(data_apoyo_familiar$nivel_apoyo_familiar))
 probabilidades_apoyo_familiar
 ```
-Ahora que tenemos las probabilidades de las categorías, podemos modelar la variable nivel_apoyo_familiar usando una distribución multinomial. Supondremos que tenemos una muestra de tamaño 20 y utilizaremos la función rmultinom() para realizar la simulación de esta distribución.
+Ahora que tenemos las probabilidades de las categorías, podemos modelar la variable nivel_apoyo_familiar usando una distribución multinomial. Calculemos la probabilidad de que, en una muestra de tamaño 20, al menos 10 estudiantes tengan un alto nivel de apoyo familiar (categoría "Alto"). Podemos realizar una simulación para obtener la probabilidad de que ocurra este evento.
 
 ```{r}
 
@@ -244,30 +247,15 @@ pb <- probabilidades_apoyo_familiar["Bajo"]
 pm <- probabilidades_apoyo_familiar["Medio"]
 pa <- probabilidades_apoyo_familiar["Alto"]
 
-# Usar la distribución multinomial para obtener una simulación
-set.seed(42)
-simulacion_apoyo <- rmultinom(1, size = 20, prob = c(pb, pm, pa))
-
-# Ver la simulación de la distribución multinomial (frecuencia en cada categoría)
-simulacion_apoyo
-
-```
-Ahora, calculemos la probabilidad de que, en una muestra de tamaño 20, al menos 10 estudiantes tengan un alto nivel de apoyo familiar (categoría "Alto"). Podemos realizar una simulación para obtener la probabilidad de que ocurra este evento.
-
-```{r}
-# Simular múltiples muestras para aproximar la probabilidad
 set.seed(42)
 simulaciones_apoyo <- rmultinom(10000, size = 20, prob = c(pb, pm, pa))
 
-# Contar cuántas veces ocurre el evento de interés (al menos 5 con 'Alto' nivel de apoyo familiar)
 evento_interes_apoyo <- sum(simulaciones_apoyo[3, ] >= 10)
 
-# Calcular la probabilidad del evento
 probabilidad_evento_apoyo <- evento_interes_apoyo / 10000
 probabilidad_evento_apoyo
 
 ```
-
 Una probabilidad de 0.0856 indica que solo en el 8.56% de las muestras de 20 estudiantes se observa que al menos 10 tienen un alto nivel de apoyo familiar, lo que sugiere que este nivel de apoyo no es común en la población estudiada. Esto implica que un alto apoyo familiar podría no ser la norma, afectando su impacto en el rendimiento académico.
 
 ### Modelo de regresión multivariante para media_calificaciones Parte(V)
@@ -276,7 +264,7 @@ Veamos las 6 primeras filas de la tabla de variables cuantitativas:
 ```{r}
 head(subset2_data_apoyo_familiar)
 ```
-Queremos explicar la variable `media_calificaciones` a partir de las otras tres.Para calcular la función de score en este contexto, consideremos que queremos estimar los parámetros $\beta_0, \beta_1,\beta_2$ y $\beta_3$ del modelo de regresión lineal múltiple:
+Queremos explicar la variable `media_calificaciones` a partir de las otras tres. Consideremos que queremos estimar los parámetros $\beta_0, \beta_1,\beta_2$ y $\beta_3$ del modelo de regresión lineal múltiple:
 
 $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 \beta_3 X_3 + \epsilon,$$
 
@@ -324,10 +312,95 @@ Analizemos los resultados dados:
 
 En resumen, aunque las 3 variables están relacionadas con el rendimiento académico, la capacidad del modelo para predecir dicho rendimiento es limitada. 
 
-La función de 
+Por otro lado, la función de score en términos de $$\beta$$ es:
 
-### Contraste de hipótesis para las medias de h_apoyo familiar y media_calificaciones (Parte VI)
+$$
+Score(\beta) = \frac{1}{\sigma^2} X^T (Y - X \beta).
+$$
+
+Veamos si esta es o no 0.
+
+```{r}
+X <- subset2_data_apoyo_familiar %>%
+  select(h_apoyo_familiar, h_estudio_individual, tiempo_transporte)
+X <- as.matrix(X)
+columna_unos <- rep(1, nrow(X))
+X <- cbind(columna_unos, X)
+B <- c(3.18,0.33,0.11,0.05) 
+set.seed(123)
+e <- rnorm(100, mean = 0, sd = 1)
+Y <- X %*% B + e 
+Score_sin_sigma = t(X) %*% (Y - X %*% B)
+Score_sin_sigma
+```
+Como la función de score es diferente de cero, indica que al cambiar los valores de $\beta$, podríamos encontrar un ajuste de mayor verosimilitud para el modelo.
+
+Este ajuste es fundamental para modelar y entender el efecto de cada factor en el rendimiento academico, lo cual podría ayudar a dar recomendaciones a las familias para ayudar al rendimiento académico de sus hijos.
+
+
+### Contraste de hipótesis (Parte VI)
+
+El objetivo de esta sección es comparar las medias de dos grupos en varias variables a la vez. En nuestro caso, los dos grupos estarán divididos según el nivel de estudios de los padres. Las variables que vamos a analizar en estos dos grupos son el nivel de apoyo familiar y el promedio de calificaciones. Definamos todo lo necesario para llevar a cabo este análisis:
+
+```{r}
+X1 <- data_apoyo_familiar %>%
+  filter(Educacion_Padres == "superiores") %>%    
+  select(h_apoyo_familiar, media_calificaciones)
+X2 <- data_apoyo_familiar %>%
+  filter(Educacion_Padres == "básicos") %>%    
+  select(h_apoyo_familiar, media_calificaciones)
+```
+
+Entonces tenemos que el grupo de alumnos con padres con estudios superiores tiene 63 observaciones y el otro 37. 
+
+Definamos los vectores de medias y las matrices de covarianzas: 
+
+```{r}
+x1 <- colMeans(X1)
+x2 <- colMeans(X2)
+S1 <- cov(X1)
+S2 <- cov(X2)
+```
+
+Estimación centrada de la matriz de covarianzas común y su inversa:
+
+```{r}
+S_tilde = (63*S1 + 37*S2)/100
+inv_S_tilde = solve(S_tilde)
+```
+
+Distancia de mahalanobis entre las dos muestras: 
+
+```{r}
+D <- t(x1-x2) %*% inv_S_tilde %*% (x1-x2)
+D
+```
+Estadístico F: 
+
+```{r}
+n1=63
+n2=37
+p=2
+Est_F = ((n1 +n2 -1 -p)/((n1+n2-2)*(p)))*((n1*n2)/(n1+n2))*D
+F_2_97 = df(0.99, df1 = 97, df2 = 2)
+```
+
+Dado que $F = 2.45$ es más alto que el valor crítico de $F_{2, 97}$ para un nivel de significancia $0.01$, lo que implica que existe evidencia suficiente para rechazar $H_0$.Esto significa que las medias de los dos grupos no son iguales.
+
+Utilizando el test de hotelling: 
+
+```{r}
+r=hotelling.test(X1,X2)
+r
+```
+...... CONCLUSION CONTRARIA
 
 ## Conclusiones o recomendaciones (Parte VII)
 
+Los hallazgos obtenidos son: En la sección 4, observamos que la mayoría de los alumnos perciben que no reciben suficiente apoyo en casa. En la sección 3, encontramos una correlación positiva entre el apoyo familiar y los resultados académicos, y también se identificó que factores como el género y las horas de estudio individual pueden influir en el rendimiento académico. Finalmente, en la sección 6, concluimos que no hay evidencia suficiente para afirmar que la media del rendimiento académico y el apoyo familiar sea igual entre los alumnos cuyos padres tienen distintos niveles de estudios. En conclusión, nuestros resultados indican que el apoyo familiar tiene una influencia significativa en el rendimiento académico de los alumnos. Sin embargo, esta influencia no parece estar relacionada con el nivel de formación académica de los padres.
+
 ## Bibliografia
+
+ - [Data Kaggle](https://www.kaggle.com/datasets/muhammadroshaanriaz/students-performance-dataset-cleaned?resource=download)
+ - [Aprender R - UIB](https://aprender-uib.github.io/AD/)
+ - "Nuevos Métodos de Análisis Multivariante" de Carles M. Cuadras

@@ -113,7 +113,7 @@ window.Quarto = {
   <li><a href="#hipotesis-y-objetivos-parte-i" id="toc-hipotesis-y-objetivos-parte-i" class="nav-link" data-scroll-target="#hipotesis-y-objetivos-parte-i">Hipotesis y objetivos (Parte I)</a>
   <ul class="collapse">
   <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general">Objetivo general</a></li>
-  <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos">Objetivos específicos</a></li>
+  <li><a href="#objetivos-secundários" id="toc-objetivos-secundários" class="nav-link" data-scroll-target="#objetivos-secundários">Objetivos secundários</a></li>
   </ul></li>
   <li><a href="#creación-y-descripción-de-la-base-de-datos-parte-ii" id="toc-creación-y-descripción-de-la-base-de-datos-parte-ii" class="nav-link" data-scroll-target="#creación-y-descripción-de-la-base-de-datos-parte-ii">Creación y descripción de la base de datos (Parte II)</a>
   <ul class="collapse">
@@ -124,7 +124,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#modelizar-la-variable-nivel_apoyo_familiar-parte-iv" id="toc-modelizar-la-variable-nivel_apoyo_familiar-parte-iv" class="nav-link" data-scroll-target="#modelizar-la-variable-nivel_apoyo_familiar-parte-iv">Modelizar la variable nivel_apoyo_familiar (Parte IV)</a></li>
   <li><a href="#modelo-de-regresión-multivariante-para-media_calificaciones-partev" id="toc-modelo-de-regresión-multivariante-para-media_calificaciones-partev" class="nav-link" data-scroll-target="#modelo-de-regresión-multivariante-para-media_calificaciones-partev">Modelo de regresión multivariante para media_calificaciones Parte(V)</a></li>
-  <li><a href="#contraste-de-hipótesis-para-las-medias-de-h_apoyo-familiar-y-media_calificaciones-parte-vi" id="toc-contraste-de-hipótesis-para-las-medias-de-h_apoyo-familiar-y-media_calificaciones-parte-vi" class="nav-link" data-scroll-target="#contraste-de-hipótesis-para-las-medias-de-h_apoyo-familiar-y-media_calificaciones-parte-vi">Contraste de hipótesis para las medias de h_apoyo familiar y media_calificaciones (Parte VI)</a></li>
+  <li><a href="#contraste-de-hipótesis-parte-vi" id="toc-contraste-de-hipótesis-parte-vi" class="nav-link" data-scroll-target="#contraste-de-hipótesis-parte-vi">Contraste de hipótesis (Parte VI)</a></li>
   </ul></li>
   <li><a href="#conclusiones-o-recomendaciones-parte-vii" id="toc-conclusiones-o-recomendaciones-parte-vii" class="nav-link" data-scroll-target="#conclusiones-o-recomendaciones-parte-vii">Conclusiones o recomendaciones (Parte VII)</a></li>
   <li><a href="#bibliografia" id="toc-bibliografia" class="nav-link" data-scroll-target="#bibliografia">Bibliografia</a></li>
@@ -160,26 +160,9 @@ window.Quarto = {
 
 
 <p><a href="https://github.com/WatCadet/Taller-de-repaso-para-el-Parcial-I">Enlace al repositorio de Github</a></p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-✖ dplyr::select() masks MASS::select()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
-Registered S3 method overwritten by 'GGally':
-  method from   
-  +.gg   ggplot2</code></pre>
-</div>
-</div>
 <section id="resumen" class="level2">
 <h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<p>En este análisis se realizará un estudio multivariante a partir de datos recolectados de estudiantes. El objetivo es determinar si el nivel de apoyo que los estudiantes sienten en casa en relación con sus estudios tiene un impacto significativo en su desempeño académico. A través de técnicas estadísticas multivariantes, se analizarán diversas variables relacionadas con el entorno familiar y los resultados escolares para identificar posibles patrones que permitan entender mejor esta influencia.</p>
 </section>
 <section id="hipotesis-y-objetivos-parte-i" class="level2">
 <h2 class="anchored" data-anchor-id="hipotesis-y-objetivos-parte-i">Hipotesis y objetivos (Parte I)</h2>
@@ -190,14 +173,13 @@ Registered S3 method overwritten by 'GGally':
 <li>Evaluar el impacto del apoyo familiar en el rendimiento académico de los estudiantes.</li>
 </ul>
 </section>
-<section id="objetivos-específicos" class="level3">
-<h3 class="anchored" data-anchor-id="objetivos-específicos">Objetivos específicos</h3>
+<section id="objetivos-secundários" class="level3">
+<h3 class="anchored" data-anchor-id="objetivos-secundários">Objetivos secundários</h3>
 <ul>
-<li><p>Medir el nivel de apoyo familiar.</p></li>
-<li><p>Cuantificar el rendimiento académico.</p></li>
-<li><p>Establecer una relación entre el apoyo familiar y el rendimiento académico.</p></li>
-<li><p>Controlar variables adicionales que puedan influir en el rendimiento académico.</p></li>
-<li><p>Validar la hipótesis.</p></li>
+<li><p>Medir la percepción de los estudiantes sobre el apoyo que reciben en casa.</p></li>
+<li><p>Cuantificar el rendimiento académico y ver si se relaciona con el apoyo familiar.</p></li>
+<li><p>Considerar otros factores que puedan afectar el rendimiento académico.</p></li>
+<li><p>Verificar si el rendimiento académico y el apoyo familiar cambian según el nivel educativo de los padres.</p></li>
 </ul>
 </section>
 </section>
@@ -232,39 +214,39 @@ Registered S3 method overwritten by 'GGally':
 <h3 class="anchored" data-anchor-id="simulación-de-los-datos">Simulación de los datos</h3>
 <p>Definimos las medias y matriz de covarianza para las variables cuantitativas. El vector de medias sigue el siguiente orden: media de horas de apoyo familiar, media de calificaciones, media de horas de estudio individual, media de minutos de transporte.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="fl">6.5</span>, <span class="fl">7.5</span>, <span class="dv">15</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>covarianza <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="fl">0.5</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                       <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="fl">0.2</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fl">1.5</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.7</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="dv">6</span>), </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="fl">6.5</span>, <span class="fl">7.5</span>, <span class="dv">15</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>covarianza <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="fl">0.5</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                       <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="fl">0.2</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fl">1.5</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.7</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="dv">6</span>), </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer una semilla para reproducibilidad</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar datos cuantitativos</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>datos_numericos <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">100</span>, <span class="at">mu =</span> media, <span class="at">Sigma =</span> covarianza)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustar los valores de promedio de calificaciones a la escala de 1 a 10</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>datos_numericos[,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">pmin</span>(<span class="fu">pmax</span>(<span class="fu">round</span>(datos_numericos[,<span class="dv">2</span>], <span class="dv">1</span>), <span class="dv">1</span>), <span class="dv">10</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear la tabla de datos con las variables definidas</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>data_apoyo_familiar <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">h_apoyo_familiar =</span> <span class="fu">round</span>(datos_numericos[,<span class="dv">1</span>], <span class="dv">1</span>),</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">media_calificaciones =</span> datos_numericos[,<span class="dv">2</span>],</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">h_estudio_individual =</span> <span class="fu">round</span>(datos_numericos[,<span class="dv">3</span>], <span class="dv">1</span>),</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">tiempo_transporte =</span> <span class="fu">round</span>(datos_numericos[,<span class="dv">4</span>]),</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">tipo_escuela =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Pública"</span>, <span class="st">"Privada"</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">genero =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Masculino"</span>, <span class="st">"Femenino"</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">nivel_apoyo_familiar =</span> <span class="fu">ordered</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>, <span class="st">"Medio"</span>, <span class="st">"Alto"</span>)),</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">motivacion_academica =</span> <span class="fu">ordered</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Muy Baja"</span>, <span class="st">"Baja"</span>, <span class="st">"Media"</span>, <span class="st">"Alta"</span>, <span class="st">"Muy Alta"</span>)),</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">nivel_interes_materias =</span> <span class="fu">ordered</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Muy Bajo"</span>, <span class="st">"Bajo"</span>, <span class="st">"Medio"</span>, <span class="st">"Alto"</span>, <span class="st">"Muy Alto"</span>))</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer una semilla para reproducibilidad</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar datos cuantitativos</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>datos_numericos <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">100</span>, <span class="at">mu =</span> media, <span class="at">Sigma =</span> covarianza)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustar los valores de promedio de calificaciones a la escala de 1 a 10</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>datos_numericos[,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">pmin</span>(<span class="fu">pmax</span>(<span class="fu">round</span>(datos_numericos[,<span class="dv">2</span>], <span class="dv">1</span>), <span class="dv">1</span>), <span class="dv">10</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear la tabla de datos con las variables definidas</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>data_apoyo_familiar <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">h_apoyo_familiar =</span> <span class="fu">round</span>(datos_numericos[,<span class="dv">1</span>], <span class="dv">1</span>),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">media_calificaciones =</span> datos_numericos[,<span class="dv">2</span>],</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">h_estudio_individual =</span> <span class="fu">round</span>(datos_numericos[,<span class="dv">3</span>], <span class="dv">1</span>),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">tiempo_transporte =</span> <span class="fu">round</span>(datos_numericos[,<span class="dv">4</span>]),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">tipo_escuela =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Pública"</span>, <span class="st">"Privada"</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">genero =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Masculino"</span>, <span class="st">"Femenino"</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">nivel_apoyo_familiar =</span> <span class="fu">ordered</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>, <span class="st">"Medio"</span>, <span class="st">"Alto"</span>)),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">motivacion_academica =</span> <span class="fu">ordered</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Muy Baja"</span>, <span class="st">"Baja"</span>, <span class="st">"Media"</span>, <span class="st">"Alta"</span>, <span class="st">"Muy Alta"</span>)),</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">nivel_interes_materias =</span> <span class="fu">ordered</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Muy Bajo"</span>, <span class="st">"Bajo"</span>, <span class="st">"Medio"</span>, <span class="st">"Alto"</span>, <span class="st">"Muy Alto"</span>))</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Mostramos las 6 primeras filas:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_apoyo_familiar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_apoyo_familiar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  h_apoyo_familiar media_calificaciones h_estudio_individual tiempo_transporte
 1              1.9                  5.0                  8.7                11
@@ -291,21 +273,21 @@ Registered S3 method overwritten by 'GGally':
 </div>
 <p>Vamos a añadir dos variables más, extraidas del conjunto de datos <code>Students_Performance.csv</code> que podemos encontrar en el siguiente <a href="https://www.kaggle.com/datasets/muhammadroshaanriaz/students-performance-dataset-cleaned?resource=download">enlace</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>students_data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"Students_Performance.csv"</span>,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">","</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> students_data <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(parental_level_of_education, lunch)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tomar una muestra aleatoria de 100 observaciones</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)  <span class="co"># Aseguramos reproducibilidad</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="ot">&lt;-</span> subset_data <span class="sc">%&gt;%</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>students_data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"Students_Performance.csv"</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">","</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> students_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(parental_level_of_education, lunch)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tomar una muestra aleatoria de 100 observaciones</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)  <span class="co"># Aseguramos reproducibilidad</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="ot">&lt;-</span> subset_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Veamos que niveles tienen nuestras dos nuevas variables y su frecuencia:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(parental_level_of_education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(parental_level_of_education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  parental_level_of_education  n
 1          associate's degree 22
@@ -318,15 +300,15 @@ Registered S3 method overwritten by 'GGally':
 </div>
 <p>Vamos a agrupar en solo dos clases:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="ot">&lt;-</span> sampled_data <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Educacion_Padres =</span> <span class="fu">case_when</span>(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    parental_level_of_education <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"some high school"</span>, <span class="st">"high school"</span>) <span class="sc">~</span> <span class="st">"básicos"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    parental_level_of_education <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"associate's degree"</span>, <span class="st">"bachelor's degree"</span>, <span class="st">"master's degree"</span>,<span class="st">"some college"</span>) <span class="sc">~</span> <span class="st">"superiores"</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="ot">&lt;-</span> sampled_data <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Educacion_Padres =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    parental_level_of_education <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"some high school"</span>, <span class="st">"high school"</span>) <span class="sc">~</span> <span class="st">"básicos"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    parental_level_of_education <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"associate's degree"</span>, <span class="st">"bachelor's degree"</span>, <span class="st">"master's degree"</span>,<span class="st">"some college"</span>) <span class="sc">~</span> <span class="st">"superiores"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(lunch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sampled_data <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(lunch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  lunch  n
 1     0 39
@@ -340,16 +322,16 @@ Registered S3 method overwritten by 'GGally':
 </ul>
 <p>Finalmente, añadimos al conjunto de datos inicial nuestras dos nuevas variables:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un nuevo dataset con las columnas que quieres añadir</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nuevas_columnas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Lunch =</span> sampled_data<span class="sc">$</span>lunch, </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Educacion_Padres =</span> sampled_data<span class="sc">$</span>Educacion_Padres</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Unir los datasets manteniendo los nombres de las columnas</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>data_apoyo_familiar <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(data_apoyo_familiar, nuevas_columnas)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_apoyo_familiar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un nuevo dataset con las columnas que quieres añadir</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>nuevas_columnas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Lunch =</span> sampled_data<span class="sc">$</span>lunch, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Educacion_Padres =</span> sampled_data<span class="sc">$</span>Educacion_Padres</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Unir los datasets manteniendo los nombres de las columnas</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>data_apoyo_familiar <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(data_apoyo_familiar, nuevas_columnas)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_apoyo_familiar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  h_apoyo_familiar media_calificaciones h_estudio_individual tiempo_transporte
 1              1.9                  5.0                  8.7                11
@@ -380,9 +362,9 @@ Registered S3 method overwritten by 'GGally':
 <h2 class="anchored" data-anchor-id="análisis-descriptivo-parte-iii">Análisis descriptivo (Parte III)</h2>
 <p>Para realizar el análisis descriptivo multivariante usaremos un <code>ggpairs</code>. Lo haremos solo de las variables que creemos que son más interesantes para alcanzar nuestros objetivos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>subset1_data_apoyo_familiar <span class="ot">&lt;-</span> data_apoyo_familiar <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(h_apoyo_familiar, media_calificaciones, h_estudio_individual, genero)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(subset1_data_apoyo_familiar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>subset1_data_apoyo_familiar <span class="ot">&lt;-</span> data_apoyo_familiar <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(h_apoyo_familiar, media_calificaciones, h_estudio_individual, genero)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(subset1_data_apoyo_familiar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
@@ -416,29 +398,29 @@ Registered S3 method overwritten by 'GGally':
 <p><strong>Interpretación global en relación con el objetivo</strong> La correlación positiva respalda la hipótesis de que mayores niveles de apoyo familiar pueden influir positivamente en los resultados académicos de los estudiantes. Además la correlación positiva entre el apoyo familiar y el tiempo de estudio individual sugiere que los estudiantes con más apoyo familiar no solo tienen mejores calificaciones, sino que también están más motivados.</p>
 <p>Veamos ahora solo para las variables cuantitativas, que varianza generalizada y varianza total tienen.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>subset2_data_apoyo_familiar <span class="ot">&lt;-</span> data_apoyo_familiar <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(h_apoyo_familiar, media_calificaciones, h_estudio_individual, tiempo_transporte)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>subset2_data_apoyo_familiar <span class="ot">&lt;-</span> data_apoyo_familiar <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(h_apoyo_familiar, media_calificaciones, h_estudio_individual, tiempo_transporte)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Las definiciones de varianza generalizada y variación total són las siguientes,repectivamente:</p>
 <p><span class="math display">\[|S| = \prod_i^p \lambda_i\]</span> <span class="math display">\[Tr(S)= \sum_i^p \lambda_i\]</span> donde los <span class="math inline">\(\lambda_i\)</span> són los valores propios de la matriz de covarianzas <span class="math inline">\(S\)</span>. Saquemos los valores propios de <span class="math inline">\(S\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>S <span class="ot">=</span> <span class="fu">cov</span>(subset2_data_apoyo_familiar)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>valores_propios <span class="ot">&lt;-</span> <span class="fu">eigen</span>(S)<span class="sc">$</span>values</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>valores_propios</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>S <span class="ot">=</span> <span class="fu">cov</span>(subset2_data_apoyo_familiar)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>valores_propios <span class="ot">&lt;-</span> <span class="fu">eigen</span>(S)<span class="sc">$</span>values</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>valores_propios</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.094996 4.617015 2.946894 1.783450</code></pre>
 </div>
 </div>
 <p>Por tanto, la varianza generalizada es:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(valores_propios)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(valores_propios)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 196.4279</code></pre>
 </div>
 </div>
 <p>Y, la variación total:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(valores_propios)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(valores_propios)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 17.44235</code></pre>
 </div>
@@ -449,47 +431,29 @@ Registered S3 method overwritten by 'GGally':
 <h2 class="anchored" data-anchor-id="aplicación-de-pruebas-estadísticas">Aplicación de pruebas estadísticas</h2>
 <section id="modelizar-la-variable-nivel_apoyo_familiar-parte-iv" class="level3">
 <h3 class="anchored" data-anchor-id="modelizar-la-variable-nivel_apoyo_familiar-parte-iv">Modelizar la variable nivel_apoyo_familiar (Parte IV)</h3>
-<p>Primero, necesitamos calcular las probabilidades de que un estudiante pertenezca a cada una de las categorías de nivel_apoyo_familiar.</p>
+<p>Primero, necesitamos calcular las probabilidades de que un estudiante pertenezca a cada una de las categorías del nivel de apoyo familiar percibido por el alumno</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>probabilidades_apoyo_familiar <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(data_apoyo_familiar<span class="sc">$</span>nivel_apoyo_familiar))</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>probabilidades_apoyo_familiar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>probabilidades_apoyo_familiar <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(data_apoyo_familiar<span class="sc">$</span>nivel_apoyo_familiar))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>probabilidades_apoyo_familiar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  Bajo Medio  Alto 
  0.33  0.34  0.33 </code></pre>
 </div>
 </div>
-<p>Ahora que tenemos las probabilidades de las categorías, podemos modelar la variable nivel_apoyo_familiar usando una distribución multinomial. Supondremos que tenemos una muestra de tamaño 20 y utilizaremos la función rmultinom() para realizar la simulación de esta distribución.</p>
+<p>Ahora que tenemos las probabilidades de las categorías, podemos modelar la variable nivel_apoyo_familiar usando una distribución multinomial. Calculemos la probabilidad de que, en una muestra de tamaño 20, al menos 10 estudiantes tengan un alto nivel de apoyo familiar (categoría “Alto”). Podemos realizar una simulación para obtener la probabilidad de que ocurra este evento.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> probabilidades_apoyo_familiar[<span class="st">"Bajo"</span>]</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span> probabilidades_apoyo_familiar[<span class="st">"Medio"</span>]</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>pa <span class="ot">&lt;-</span> probabilidades_apoyo_familiar[<span class="st">"Alto"</span>]</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Usar la distribución multinomial para obtener una simulación</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>simulacion_apoyo <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="dv">1</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fu">c</span>(pb, pm, pa))</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver la simulación de la distribución multinomial (frecuencia en cada categoría)</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>simulacion_apoyo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      [,1]
-Bajo    10
-Medio    3
-Alto     7</code></pre>
-</div>
-</div>
-<p>Ahora, calculemos la probabilidad de que, en una muestra de tamaño 20, al menos 10 estudiantes tengan un alto nivel de apoyo familiar (categoría “Alto”). Podemos realizar una simulación para obtener la probabilidad de que ocurra este evento.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simular múltiples muestras para aproximar la probabilidad</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>simulaciones_apoyo <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="dv">10000</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fu">c</span>(pb, pm, pa))</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Contar cuántas veces ocurre el evento de interés (al menos 5 con 'Alto' nivel de apoyo familiar)</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>evento_interes_apoyo <span class="ot">&lt;-</span> <span class="fu">sum</span>(simulaciones_apoyo[<span class="dv">3</span>, ] <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la probabilidad del evento</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>probabilidad_evento_apoyo <span class="ot">&lt;-</span> evento_interes_apoyo <span class="sc">/</span> <span class="dv">10000</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>probabilidad_evento_apoyo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> probabilidades_apoyo_familiar[<span class="st">"Bajo"</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span> probabilidades_apoyo_familiar[<span class="st">"Medio"</span>]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>pa <span class="ot">&lt;-</span> probabilidades_apoyo_familiar[<span class="st">"Alto"</span>]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>simulaciones_apoyo <span class="ot">&lt;-</span> <span class="fu">rmultinom</span>(<span class="dv">10000</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fu">c</span>(pb, pm, pa))</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>evento_interes_apoyo <span class="ot">&lt;-</span> <span class="fu">sum</span>(simulaciones_apoyo[<span class="dv">3</span>, ] <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>probabilidad_evento_apoyo <span class="ot">&lt;-</span> evento_interes_apoyo <span class="sc">/</span> <span class="dv">10000</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>probabilidad_evento_apoyo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0856</code></pre>
 </div>
@@ -500,7 +464,7 @@ Alto     7</code></pre>
 <h3 class="anchored" data-anchor-id="modelo-de-regresión-multivariante-para-media_calificaciones-partev">Modelo de regresión multivariante para media_calificaciones Parte(V)</h3>
 <p>Veamos las 6 primeras filas de la tabla de variables cuantitativas:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(subset2_data_apoyo_familiar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(subset2_data_apoyo_familiar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  h_apoyo_familiar media_calificaciones h_estudio_individual tiempo_transporte
 1              1.9                  5.0                  8.7                11
@@ -511,7 +475,7 @@ Alto     7</code></pre>
 6              3.8                  6.1                  9.1                15</code></pre>
 </div>
 </div>
-<p>Queremos explicar la variable <code>media_calificaciones</code> a partir de las otras tres.Para calcular la función de score en este contexto, consideremos que queremos estimar los parámetros <span class="math inline">\(\beta_0, \beta_1,\beta_2\)</span> y <span class="math inline">\(\beta_3\)</span> del modelo de regresión lineal múltiple:</p>
+<p>Queremos explicar la variable <code>media_calificaciones</code> a partir de las otras tres. Consideremos que queremos estimar los parámetros <span class="math inline">\(\beta_0, \beta_1,\beta_2\)</span> y <span class="math inline">\(\beta_3\)</span> del modelo de regresión lineal múltiple:</p>
 <p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 \beta_3 X_3 + \epsilon,\]</span></p>
 <p>donde <span class="math inline">\(Y\)</span> representa la media en las calificaciones, <span class="math inline">\(X_1\)</span> las horas de apoyo familiar, <span class="math inline">\(X_2\)</span> las horas de estudio individual, <span class="math inline">\(X_3\)</span> el tiempo de transporte , y <span class="math inline">\(\epsilon\)</span> es el término de error.</p>
 <p>Dado que estamos interesados en estimar los parámetros <span class="math inline">\(\beta = (\beta_0, \beta_1, \beta_2, \beta_3)\)</span>, necesitamos derivar la función de verosimilitud en términos de estos parámetros y luego obtener la función de score tomando la derivada de la log-verosimilitud con respecto a $ $.</p>
@@ -527,10 +491,10 @@ Alto     7</code></pre>
 <p>Dado que el término de error <span class="math inline">\(\epsilon\)</span> sigue una distribución normal, el vector <span class="math inline">\(Y\)</span> también sigue una distribución normal, con media <span class="math inline">\(X \beta\)</span> y varianza <span class="math inline">\(\sigma^2 I\)</span>:</p>
 <p><span class="math display">\[Y \sim \mathcal{N}(X \beta, \sigma^2 I).\]</span> Hagamos el modelo de regresión multivariante:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>modelo_regresion <span class="ot">&lt;-</span> <span class="fu">lm</span>(media_calificaciones <span class="sc">~</span> h_apoyo_familiar <span class="sc">+</span> h_estudio_individual <span class="sc">+</span>tiempo_transporte , <span class="at">data =</span> subset2_data_apoyo_familiar)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver los resultados del modelo</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_regresion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>modelo_regresion <span class="ot">&lt;-</span> <span class="fu">lm</span>(media_calificaciones <span class="sc">~</span> h_apoyo_familiar <span class="sc">+</span> h_estudio_individual <span class="sc">+</span>tiempo_transporte , <span class="at">data =</span> subset2_data_apoyo_familiar)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver los resultados del modelo</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_regresion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -565,17 +529,101 @@ F-statistic: 9.925 on 3 and 96 DF,  p-value: 9.242e-06</code></pre>
 <li><p>El valor de <span class="math inline">\(R^2\)</span> de 0.2367 indica que el modelo explica solo el 23.67% de la variabilidad del rendimiento académico a partir de las variables independientes consideradas. Esto implica que gran parte de la variabilidad del rendimiento académico no está siendo explicada por las variables del modelo. Esto sugiere que podría ser útil incluir más variables en el modelo</p></li>
 </ul>
 <p>En resumen, aunque las 3 variables están relacionadas con el rendimiento académico, la capacidad del modelo para predecir dicho rendimiento es limitada.</p>
-<p>La función de</p>
+<p>Por otro lado, la función de score en términos de <span class="math display">\[\beta\]</span> es:</p>
+<p><span class="math display">\[
+Score(\beta) = \frac{1}{\sigma^2} X^T (Y - X \beta).
+\]</span></p>
+<p>Veamos si esta es o no 0.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> subset2_data_apoyo_familiar <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(h_apoyo_familiar, h_estudio_individual, tiempo_transporte)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(X)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>columna_unos <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(X))</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(columna_unos, X)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.18</span>,<span class="fl">0.33</span>,<span class="fl">0.11</span>,<span class="fl">0.05</span>) </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> X <span class="sc">%*%</span> B <span class="sc">+</span> e </span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>Score_sin_sigma <span class="ot">=</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> (Y <span class="sc">-</span> X <span class="sc">%*%</span> B)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>Score_sin_sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                           [,1]
+columna_unos           9.040591
+h_apoyo_familiar      49.232769
+h_estudio_individual  58.854255
+tiempo_transporte    157.740319</code></pre>
+</div>
+</div>
+<p>Como la función de score es diferente de cero, indica que al cambiar los valores de <span class="math inline">\(\beta\)</span>, podríamos encontrar un ajuste de mayor verosimilitud para el modelo.</p>
+<p>Este ajuste es fundamental para modelar y entender el efecto de cada factor en el rendimiento academico, lo cual podría ayudar a dar recomendaciones a las familias para ayudar al rendimiento académico de sus hijos.</p>
 </section>
-<section id="contraste-de-hipótesis-para-las-medias-de-h_apoyo-familiar-y-media_calificaciones-parte-vi" class="level3">
-<h3 class="anchored" data-anchor-id="contraste-de-hipótesis-para-las-medias-de-h_apoyo-familiar-y-media_calificaciones-parte-vi">Contraste de hipótesis para las medias de h_apoyo familiar y media_calificaciones (Parte VI)</h3>
+<section id="contraste-de-hipótesis-parte-vi" class="level3">
+<h3 class="anchored" data-anchor-id="contraste-de-hipótesis-parte-vi">Contraste de hipótesis (Parte VI)</h3>
+<p>El objetivo de esta sección es comparar las medias de dos grupos en varias variables a la vez. En nuestro caso, los dos grupos estarán divididos según el nivel de estudios de los padres. Las variables que vamos a analizar en estos dos grupos son el nivel de apoyo familiar y el promedio de calificaciones. Definamos todo lo necesario para llevar a cabo este análisis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>X1 <span class="ot">&lt;-</span> data_apoyo_familiar <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Educacion_Padres <span class="sc">==</span> <span class="st">"superiores"</span>) <span class="sc">%&gt;%</span>    </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(h_apoyo_familiar, media_calificaciones)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">&lt;-</span> data_apoyo_familiar <span class="sc">%&gt;%</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Educacion_Padres <span class="sc">==</span> <span class="st">"básicos"</span>) <span class="sc">%&gt;%</span>    </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(h_apoyo_familiar, media_calificaciones)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Entonces tenemos que el grupo de alumnos con padres con estudios superiores tiene 63 observaciones y el otro 37.</p>
+<p>Definamos los vectores de medias y las matrices de covarianzas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(X1)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(X2)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>S1 <span class="ot">&lt;-</span> <span class="fu">cov</span>(X1)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>S2 <span class="ot">&lt;-</span> <span class="fu">cov</span>(X2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Estimación centrada de la matriz de covarianzas común y su inversa:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>S_tilde <span class="ot">=</span> (<span class="dv">63</span><span class="sc">*</span>S1 <span class="sc">+</span> <span class="dv">37</span><span class="sc">*</span>S2)<span class="sc">/</span><span class="dv">100</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>inv_S_tilde <span class="ot">=</span> <span class="fu">solve</span>(S_tilde)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Distancia de mahalanobis entre las dos muestras:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">t</span>(x1<span class="sc">-</span>x2) <span class="sc">%*%</span> inv_S_tilde <span class="sc">%*%</span> (x1<span class="sc">-</span>x2)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>D</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]
+[1,] 0.2124902</code></pre>
+</div>
+</div>
+<p>Estadístico F:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>n1<span class="ot">=</span><span class="dv">63</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>n2<span class="ot">=</span><span class="dv">37</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="dv">2</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>Est_F <span class="ot">=</span> ((n1 <span class="sc">+</span>n2 <span class="sc">-</span><span class="dv">1</span> <span class="sc">-</span>p)<span class="sc">/</span>((n1<span class="sc">+</span>n2<span class="dv">-2</span>)<span class="sc">*</span>(p)))<span class="sc">*</span>((n1<span class="sc">*</span>n2)<span class="sc">/</span>(n1<span class="sc">+</span>n2))<span class="sc">*</span>D</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>F_2_97 <span class="ot">=</span> <span class="fu">df</span>(<span class="fl">0.99</span>, <span class="at">df1 =</span> <span class="dv">97</span>, <span class="at">df2 =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Dado que <span class="math inline">\(F = 2.45\)</span> es más alto que el valor crítico de <span class="math inline">\(F_{2, 97}\)</span> para un nivel de significancia <span class="math inline">\(0.01\)</span>, lo que implica que existe evidencia suficiente para rechazar <span class="math inline">\(H_0\)</span>.Esto significa que las medias de los dos grupos no son iguales.</p>
+<p>Utilizando el test de hotelling:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>r<span class="ot">=</span><span class="fu">hotelling.test</span>(X1,X2)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test stat:  4.9514 
+Numerator df:  2 
+Denominator df:  97 
+P-value:  0.09158 </code></pre>
+</div>
+</div>
+<p>…… CONCLUSION CONTRARIA</p>
 </section>
 </section>
 <section id="conclusiones-o-recomendaciones-parte-vii" class="level2">
 <h2 class="anchored" data-anchor-id="conclusiones-o-recomendaciones-parte-vii">Conclusiones o recomendaciones (Parte VII)</h2>
+<p>Los hallazgos obtenidos son: En la sección 4, observamos que la mayoría de los alumnos perciben que no reciben suficiente apoyo en casa. En la sección 3, encontramos una correlación positiva entre el apoyo familiar y los resultados académicos, y también se identificó que factores como el género y las horas de estudio individual pueden influir en el rendimiento académico. Finalmente, en la sección 6, concluimos que no hay evidencia suficiente para afirmar que la media del rendimiento académico y el apoyo familiar sea igual entre los alumnos cuyos padres tienen distintos niveles de estudios. En conclusión, nuestros resultados indican que el apoyo familiar tiene una influencia significativa en el rendimiento académico de los alumnos. Sin embargo, esta influencia no parece estar relacionada con el nivel de formación académica de los padres.</p>
 </section>
 <section id="bibliografia" class="level2">
 <h2 class="anchored" data-anchor-id="bibliografia">Bibliografia</h2>
+<ul>
+<li><a href="https://www.kaggle.com/datasets/muhammadroshaanriaz/students-performance-dataset-cleaned?resource=download">Data Kaggle</a></li>
+<li><a href="https://aprender-uib.github.io/AD/">Aprender R - UIB</a></li>
+<li>“Nuevos Métodos de Análisis Multivariante” de Carles M. Cuadras</li>
+</ul>
 </section>
 
 </main>
