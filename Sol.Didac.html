@@ -596,13 +596,18 @@ tiempo_transporte    157.740319</code></pre>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>n2<span class="ot">=</span><span class="dv">37</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="dv">2</span></span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>Est_F <span class="ot">=</span> ((n1 <span class="sc">+</span>n2 <span class="sc">-</span><span class="dv">1</span> <span class="sc">-</span>p)<span class="sc">/</span>((n1<span class="sc">+</span>n2<span class="dv">-2</span>)<span class="sc">*</span>(p)))<span class="sc">*</span>((n1<span class="sc">*</span>n2)<span class="sc">/</span>(n1<span class="sc">+</span>n2))<span class="sc">*</span>D</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>F_2_97 <span class="ot">=</span> <span class="fu">df</span>(<span class="fl">0.99</span>, <span class="at">df1 =</span> <span class="dv">97</span>, <span class="at">df2 =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>F_2_97 <span class="ot">=</span> <span class="fu">qf</span>(<span class="fl">0.99</span>, <span class="at">df1 =</span> <span class="dv">97</span>, <span class="at">df2 =</span> <span class="dv">2</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(Est_F,<span class="dv">97</span>,<span class="dv">2</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>p_valor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]
+[1,] 0.3338499</code></pre>
 </div>
-<p>Dado que <span class="math inline">\(F = 2.45\)</span> es más alto que el valor crítico de <span class="math inline">\(F_{2, 97}\)</span> para un nivel de significancia <span class="math inline">\(0.01\)</span>, lo que implica que existe evidencia suficiente para rechazar <span class="math inline">\(H_0\)</span>.Esto significa que las medias de los dos grupos no son iguales.</p>
+</div>
 <p>Utilizando el test de hotelling:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>r<span class="ot">=</span><span class="fu">hotelling.test</span>(X1,X2)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>r<span class="ot">=</span><span class="fu">hotelling.test</span>(X1,X2)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test stat:  4.9514 
 Numerator df:  2 
@@ -610,12 +615,12 @@ Denominator df:  97
 P-value:  0.09158 </code></pre>
 </div>
 </div>
-<p>…… CONCLUSION CONTRARIA</p>
+<p>Dado que en los dos casos el p-valor es major a <span class="math inline">\(0.05\)</span> no existe evidencia suficiente para rechazar <span class="math inline">\(H_0\)</span>. Esto significa que las medias de los dos grupos son iguales.</p>
 </section>
 </section>
 <section id="conclusiones-o-recomendaciones-parte-vii" class="level2">
 <h2 class="anchored" data-anchor-id="conclusiones-o-recomendaciones-parte-vii">Conclusiones o recomendaciones (Parte VII)</h2>
-<p>Los hallazgos obtenidos son: En la sección 4, observamos que la mayoría de los alumnos perciben que no reciben suficiente apoyo en casa. En la sección 3, encontramos una correlación positiva entre el apoyo familiar y los resultados académicos, y también se identificó que factores como el género y las horas de estudio individual pueden influir en el rendimiento académico. Finalmente, en la sección 6, concluimos que no hay evidencia suficiente para afirmar que la media del rendimiento académico y el apoyo familiar sea igual entre los alumnos cuyos padres tienen distintos niveles de estudios. En conclusión, nuestros resultados indican que el apoyo familiar tiene una influencia significativa en el rendimiento académico de los alumnos. Sin embargo, esta influencia no parece estar relacionada con el nivel de formación académica de los padres.</p>
+<p>Los hallazgos obtenidos son: En la sección 4, observamos que la mayoría de los alumnos perciben que no reciben suficiente apoyo en casa. En la sección 3, encontramos una correlación positiva entre el apoyo familiar y los resultados académicos, y también se identificó que factores como el género y las horas de estudio individual pueden influir en el rendimiento académico, aunque en menos grado. Finalmente, en la sección 6, concluimos que no hay evidencia suficiente para rechazar que las medias de rendimiento académico y el apoyo familiar sean iguales entre los alumnos cuyos padres tienen estudios superiores o básicos. En conclusión, nuestros resultados indican que el apoyo familiar tiene una influencia significativa en el rendimiento académico de los alumnos. Sin embargo, esta influencia no parece estar relacionada con el nivel de formación académica de los padres.</p>
 </section>
 <section id="bibliografia" class="level2">
 <h2 class="anchored" data-anchor-id="bibliografia">Bibliografia</h2>

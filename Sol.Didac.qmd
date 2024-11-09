@@ -41,8 +41,7 @@ La hipótesis a investigar es la siguiente: “Los estudiantes que reciben apoyo
 
 - Considerar otros factores que puedan afectar el rendimiento académico.
 
-- 
-Verificar si el rendimiento académico y el apoyo familiar cambian según el nivel educativo de los padres.
+- Verificar si el rendimiento académico y el apoyo familiar cambian según el nivel educativo de los padres.
 
 
 ## Creación y descripción de la base de datos (Parte II)
@@ -382,22 +381,22 @@ n1=63
 n2=37
 p=2
 Est_F = ((n1 +n2 -1 -p)/((n1+n2-2)*(p)))*((n1*n2)/(n1+n2))*D
-F_2_97 = df(0.99, df1 = 97, df2 = 2)
+F_2_97 = qf(0.99, df1 = 97, df2 = 2)
+p_valor = 1 - pf(Est_F,97,2)
+p_valor
 ```
-
-Dado que $F = 2.45$ es más alto que el valor crítico de $F_{2, 97}$ para un nivel de significancia $0.01$, lo que implica que existe evidencia suficiente para rechazar $H_0$.Esto significa que las medias de los dos grupos no son iguales.
-
 Utilizando el test de hotelling: 
 
 ```{r}
 r=hotelling.test(X1,X2)
 r
 ```
-...... CONCLUSION CONTRARIA
+
+Dado que  en los dos casos el p-valor es major a $0.05$ no existe evidencia suficiente para rechazar $H_0$. Esto significa que las medias de los dos grupos son iguales.
 
 ## Conclusiones o recomendaciones (Parte VII)
 
-Los hallazgos obtenidos son: En la sección 4, observamos que la mayoría de los alumnos perciben que no reciben suficiente apoyo en casa. En la sección 3, encontramos una correlación positiva entre el apoyo familiar y los resultados académicos, y también se identificó que factores como el género y las horas de estudio individual pueden influir en el rendimiento académico. Finalmente, en la sección 6, concluimos que no hay evidencia suficiente para afirmar que la media del rendimiento académico y el apoyo familiar sea igual entre los alumnos cuyos padres tienen distintos niveles de estudios. En conclusión, nuestros resultados indican que el apoyo familiar tiene una influencia significativa en el rendimiento académico de los alumnos. Sin embargo, esta influencia no parece estar relacionada con el nivel de formación académica de los padres.
+Los hallazgos obtenidos son: En la sección 4, observamos que la mayoría de los alumnos perciben que no reciben suficiente apoyo en casa. En la sección 3, encontramos una correlación positiva entre el apoyo familiar y los resultados académicos, y también se identificó que factores como el género y las horas de estudio individual pueden influir en el rendimiento académico, aunque en menos grado. Finalmente, en la sección 6, concluimos que no hay evidencia suficiente para rechazar que las medias de rendimiento académico y el apoyo familiar sean iguales entre los alumnos cuyos padres tienen estudios superiores o básicos. En conclusión, nuestros resultados indican que el apoyo familiar tiene una influencia significativa en el rendimiento académico de los alumnos. Sin embargo, esta influencia no parece estar relacionada con el nivel de formación académica de los padres.
 
 ## Bibliografia
 
