@@ -11,6 +11,14 @@ Rendering:
 author: 
   - Dídac Capó
 ---
+
+<style>
+p {
+  text-align: justify;
+}
+</style>
+
+
 [Enlace al repositorio de Github](https://github.com/WatCadet/Taller-de-repaso-para-el-Parcial-I)
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE}
@@ -23,7 +31,7 @@ library(Hotelling)
 
 ## Resumen
 
-En este análisis se realizará un estudio multivariante a partir de datos recolectados de estudiantes. El objetivo es determinar si el nivel de apoyo que los estudiantes sienten en casa en relación con sus estudios tiene un impacto significativo en su desempeño académico. A través de técnicas estadísticas multivariantes, se analizarán diversas variables relacionadas con el entorno familiar y los resultados escolares para identificar posibles patrones que permitan entender mejor esta influencia.
+En este análisis se realizará un estudio multivariante a partir de datos simulados/recolectados de estudiantes. El objetivo es determinar si el nivel de apoyo que los estudiantes reciben en casa en relación con sus estudios tiene un impacto significativo en su desempeño académico. A través de técnicas estadísticas multivariantes, se analizarán diversas variables relacionadas con el entorno familiar y los resultados escolares para identificar posibles patrones que permitan entender mejor esta influencia.
 
 ## Hipotesis y objetivos (Parte I)
 
@@ -55,11 +63,11 @@ Las variables que usaremos para analizar nuestra hipotesis son las siguientes:
 #### Variables ordinales:
 - *Nivel de apoyo familiar*, con niveles: Bajo, Medio y Alto. Percepción própia del estudiante sobre el apoyo familiar que recibe.
 - *Motivación académica* con niveles: Muy Baja, Baja, Media, Alta y Muy Alta.
-- *Nivel de interés en las materias* con niveles: Muy Bajo, Bajo, Medio, Alto y Muy Alto. El grado de interés del estudiante en las asignaturas.
+- *Nivel de interés en las materias* con niveles: Muy Bajo, Bajo, Medio, Alto y Muy Alto.
 
 #### Variables cuantitativas:
 - *Horas de apoyo familiar*, medida en horas por semana.
-- *Media de calificaciones*, mediada en una escala de 1 a 10. Calificaciones del estudiante en el último semestre.
+- *Media de calificaciones*, medida en una escala de 1 a 10. Calificaciones del estudiante en el último semestre.
 - *Horas de estudio individual*, medida en horas por semana.
 - *Tiempo de transporte diario*, medida en minutos. Tiempo medio que el estudiante dedica al traslado a la escuela diariamente.
 
@@ -282,7 +290,7 @@ donde:
 
 - $$\beta = \begin{pmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \\ \beta_3 \end{pmatrix},$$
 
-- $$\epsilon \sim \mathcal{N}(0, \sigma^2 I)$$ es el vector de términos de error, que sigue una distribución normal con media cero y varianza $ \sigma^2 $.
+- $$\epsilon \sim \mathcal{N}(0, \sigma^2 I)$$ es el vector de términos de error, que sigue una distribución normal con media cero y varianza $\sigma^2$.
 
 Dado que el término de error $\epsilon$ sigue una distribución normal, el vector $Y$ también sigue una distribución normal, con media $X \beta$ y varianza $\sigma^2 I$:
 
@@ -381,7 +389,6 @@ n1=63
 n2=37
 p=2
 Est_F = ((n1 +n2 -1 -p)/((n1+n2-2)*(p)))*((n1*n2)/(n1+n2))*D
-F_2_97 = qf(0.99, df1 = 97, df2 = 2)
 p_valor = 1 - pf(Est_F,97,2)
 p_valor
 ```

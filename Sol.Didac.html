@@ -159,10 +159,15 @@ window.Quarto = {
 </header>
 
 
+<style>
+p {
+  text-align: justify;
+}
+</style>
 <p><a href="https://github.com/WatCadet/Taller-de-repaso-para-el-Parcial-I">Enlace al repositorio de Github</a></p>
 <section id="resumen" class="level2">
 <h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
-<p>En este análisis se realizará un estudio multivariante a partir de datos recolectados de estudiantes. El objetivo es determinar si el nivel de apoyo que los estudiantes sienten en casa en relación con sus estudios tiene un impacto significativo en su desempeño académico. A través de técnicas estadísticas multivariantes, se analizarán diversas variables relacionadas con el entorno familiar y los resultados escolares para identificar posibles patrones que permitan entender mejor esta influencia.</p>
+<p>En este análisis se realizará un estudio multivariante a partir de datos simulados/recolectados de estudiantes. El objetivo es determinar si el nivel de apoyo que los estudiantes reciben en casa en relación con sus estudios tiene un impacto significativo en su desempeño académico. A través de técnicas estadísticas multivariantes, se analizarán diversas variables relacionadas con el entorno familiar y los resultados escolares para identificar posibles patrones que permitan entender mejor esta influencia.</p>
 </section>
 <section id="hipotesis-y-objetivos-parte-i" class="level2">
 <h2 class="anchored" data-anchor-id="hipotesis-y-objetivos-parte-i">Hipotesis y objetivos (Parte I)</h2>
@@ -198,14 +203,14 @@ window.Quarto = {
 <ul>
 <li><em>Nivel de apoyo familiar</em>, con niveles: Bajo, Medio y Alto. Percepción própia del estudiante sobre el apoyo familiar que recibe.</li>
 <li><em>Motivación académica</em> con niveles: Muy Baja, Baja, Media, Alta y Muy Alta.</li>
-<li><em>Nivel de interés en las materias</em> con niveles: Muy Bajo, Bajo, Medio, Alto y Muy Alto. El grado de interés del estudiante en las asignaturas.</li>
+<li><em>Nivel de interés en las materias</em> con niveles: Muy Bajo, Bajo, Medio, Alto y Muy Alto.</li>
 </ul>
 </section>
 <section id="variables-cuantitativas" class="level4">
 <h4 class="anchored" data-anchor-id="variables-cuantitativas">Variables cuantitativas:</h4>
 <ul>
 <li><em>Horas de apoyo familiar</em>, medida en horas por semana.</li>
-<li><em>Media de calificaciones</em>, mediada en una escala de 1 a 10. Calificaciones del estudiante en el último semestre.</li>
+<li><em>Media de calificaciones</em>, medida en una escala de 1 a 10. Calificaciones del estudiante en el último semestre.</li>
 <li><em>Horas de estudio individual</em>, medida en horas por semana.</li>
 <li><em>Tiempo de transporte diario</em>, medida en minutos. Tiempo medio que el estudiante dedica al traslado a la escuela diariamente.</li>
 </ul>
@@ -486,7 +491,7 @@ window.Quarto = {
 <li><p><span class="math inline">\(Y\)</span> es el vector de media de calificaciones</p></li>
 <li><p><span class="math inline">\(X\)</span> es la matriz de las otras tres variables con una columna de una añadida al principio</p></li>
 <li><p><span class="math display">\[\beta = \begin{pmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \\ \beta_3 \end{pmatrix},\]</span></p></li>
-<li><p><span class="math display">\[\epsilon \sim \mathcal{N}(0, \sigma^2 I)\]</span> es el vector de términos de error, que sigue una distribución normal con media cero y varianza $ ^2 $.</p></li>
+<li><p><span class="math display">\[\epsilon \sim \mathcal{N}(0, \sigma^2 I)\]</span> es el vector de términos de error, que sigue una distribución normal con media cero y varianza <span class="math inline">\(\sigma^2\)</span>.</p></li>
 </ul>
 <p>Dado que el término de error <span class="math inline">\(\epsilon\)</span> sigue una distribución normal, el vector <span class="math inline">\(Y\)</span> también sigue una distribución normal, con media <span class="math inline">\(X \beta\)</span> y varianza <span class="math inline">\(\sigma^2 I\)</span>:</p>
 <p><span class="math display">\[Y \sim \mathcal{N}(X \beta, \sigma^2 I).\]</span> Hagamos el modelo de regresión multivariante:</p>
@@ -596,9 +601,8 @@ tiempo_transporte    157.740319</code></pre>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>n2<span class="ot">=</span><span class="dv">37</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="dv">2</span></span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>Est_F <span class="ot">=</span> ((n1 <span class="sc">+</span>n2 <span class="sc">-</span><span class="dv">1</span> <span class="sc">-</span>p)<span class="sc">/</span>((n1<span class="sc">+</span>n2<span class="dv">-2</span>)<span class="sc">*</span>(p)))<span class="sc">*</span>((n1<span class="sc">*</span>n2)<span class="sc">/</span>(n1<span class="sc">+</span>n2))<span class="sc">*</span>D</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>F_2_97 <span class="ot">=</span> <span class="fu">qf</span>(<span class="fl">0.99</span>, <span class="at">df1 =</span> <span class="dv">97</span>, <span class="at">df2 =</span> <span class="dv">2</span>)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(Est_F,<span class="dv">97</span>,<span class="dv">2</span>)</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>p_valor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>p_valor <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(Est_F,<span class="dv">97</span>,<span class="dv">2</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>p_valor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]
 [1,] 0.3338499</code></pre>
